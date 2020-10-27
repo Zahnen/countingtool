@@ -3,8 +3,9 @@ $(document).ready(function() {
     event.preventDefault();
     let countTo = parseInt($("input#countTo").val());
     let countBy = parseInt($("input#countBy").val());
-    let sum = 0;
+    let currentValue = 0;
     let limit = (countTo/countBy - 1)
+    let final = [];
     $("#maths").html("");
 
     if (countBy > countTo) {
@@ -13,19 +14,12 @@ $(document).ready(function() {
       alert("We can't calculate with negatives :(");
     } else {
       for (let index = 0; index <= limit; index ++) {
-        sum = sum + countBy
-        $("#maths").append(sum + ", ")
+        currentValue = currentValue + countBy;
+        final.push(currentValue);       
       }
-  
+      let finalFormatted = final.join(", ")
+      $("#maths").append(finalFormatted);
       $("#results").show();
     }
- 
-
-
-    
   });
 });
-
-/*console.log("This is the index:" + index);
-      console.log("This is the number we're counting to:" + countTo);
-      console.log("This is the number we're counting by:" + countBy);*/
